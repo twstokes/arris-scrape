@@ -1,0 +1,25 @@
+version: "3.0"
+
+services:
+  modem_scraper:
+    build: .
+    links:
+      - influxdb
+
+  influxdb:
+    image: influxdb:1.8
+    env_file:
+      - './full-service/env.influxdb'
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./full-service/grafana_datasources:/etc/grafana/provisioning/datasources
+      - ./full-service/grafana_dashboard_providers:/etc/grafana/provisioning/dashboards
+      - ./full-service/grafana_dashboards:/var/lib/grafana/dashboards
+    ports:
+      - "3000:3000"
+    env_file:
+      - './full-service/env.grafana'
+    links:
+      - influxdb
