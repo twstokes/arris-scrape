@@ -65,10 +65,10 @@ Import the included [Grafana JSON](full-service/grafana_dashboards) and tweak ap
 3. Run `docker-compose -f full-service.yml build`
 4. Run `docker-compose -f full-service.yml up`
 5. Login to Grafana at http://localhost:3000 with the credentials `admin` / `admin`
-6. Open the Modem dashboard.
+6. Open the Modem dashboard
 
 ## Extending
 
-There's a good chance your modem status page doesn't match this one but you want to accomplish the same task. If your modem allows you to see a status page without any authentication but it just has a different layout, then adapting is straightforward. Just clone the `arris_modem.py` target and change the fields and xpath queries as needed. Use the `PrinterOutputter` to see what data points would be uploaded to InfluxDB before doing any real uploading.
+There's a good chance your modem status page doesn't match this one, but you want to accomplish the same task. If your modem allows you to see a status page without any authentication but it just has a different layout, then adapting is straightforward. Just clone the `arris_modem.py` target and change the fields and xpath queries as needed. Use the `PrinterOutputter` to see what data points would be uploaded to InfluxDB before doing any real uploading.
 
-If your modem requires some form of authentication, you'll need to implement that part. It may be as straightforward as snooping on HTTP headers using your browser to see what the script needs to send.
+If your modem requires some form of authentication, you'll need to implement that part. It may be as simple as snooping on HTTP headers using your browser to see what the script needs to send.
