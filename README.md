@@ -35,7 +35,7 @@ A preset Grafana dashboard is included with this project with some alerts that m
 1. You must know your modem's IP address. Typically these status pages are accessible from your LAN by going to a URL such as http://192.168.100.1.
 2. Hopefully your status page matches the screenshot above. If not, see the section below entitled [Extending](#extending).
 
-### I already have InfluxDB and Grafana and I want to scrape my modem.
+### Option A: I already have InfluxDB and Grafana and I want to scrape my modem.
 
 #### First
 
@@ -58,13 +58,14 @@ Copy `config_sample.py` to `config.py` and fill in your modem's URL as well as y
 
 Import the included [Grafana JSON](full-service/grafana_dashboards) and tweak appropriately.
 
-### I don't run InfluxDB or Grafana but I want to scrape my modem, or I want to test drive this project.
+### Option B: I don't run InfluxDB or Grafana but I want to scrape my modem, or I want to test drive this project.
 
 1. Install Docker
 2. Copy `config_sample.py` to `config.py` and configure the modem URL. Set the host for the InfluxDB section to `influxdb` (`'host': 'influxdb'`).
 3. Run `docker-compose -f full-service.yml build`
 4. Run `docker-compose -f full-service.yml up`
 5. Login to Grafana at http://localhost:3000 with the credentials `admin` / `admin`
+6. Open the Modem dashboard.
 
 ## Extending
 
