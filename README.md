@@ -32,7 +32,7 @@ A preset Grafana dashboard is included with this project with some alerts that m
 
 ## Getting Started
 
-1. You must know your modem's IP address. Typically these status pages are accessible from your LAN by going to a URL such as http://192.168.100.1.
+1. You must know your modem's IP address. Typically these status pages are accessible without authentication from your LAN by going to a URL such as http://192.168.100.1.
 2. Hopefully your status page matches the screenshot above. If not, see the section below entitled [Extending](#extending).
 
 ### Option A: I already have InfluxDB and Grafana and I want to scrape my modem.
