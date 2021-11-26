@@ -34,7 +34,7 @@ def run_scraper():
             retries += 1
             print("Error:", sys.exc_info())
 
-    time.sleep(scraper_config['poll_interval_seconds'])
+        time.sleep(scraper_config['poll_interval_seconds'])
 
     print("Abort! Max retries reached:", MAX_RETRIES)
     sys.exit(1)
