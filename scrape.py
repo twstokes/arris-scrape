@@ -2,12 +2,14 @@ import sys
 import time
 
 from config import scraper_config, influx_config
-from scraper.targets.arris_modem import ArrisModem
 from scraper.outputters import InfluxDBOutputter
+from scraper.outputters import PrinterOutputter
 from scraper.downloaders import RequestsDownloader
 
 MAX_RETRIES = scraper_config['max_retries']
 MODEM_URL = scraper_config['modem_url']
+MODEM_MODEL = scraper_config['modem_model']
+OUTPUTTER = scraper_config['outputter']
 
 def run_scraper():
     """
@@ -15,8 +17,8 @@ def run_scraper():
     """
     print("Modem scraper running.")
 
-    target = ArrisModem()
-    outputter = InfluxDBOutputter(influx_config)
+    target = get_target(MODEM_MODEL)
+    outputter = get_outputter(OUTPUTTER)
     downloader = RequestsDownloader()
 
     retries = 0
@@ -39,6 +41,22 @@ def run_scraper():
     print("Abort! Max retries reached:", MAX_RETRIES)
     sys.exit(1)
 
+def get_target(model):
+    if model == "SB6183":
+        from scraper.targets.arris_modem_SB6183 import ArrisModemSB6183
+        return ArrisModemSB6183()
+    if model == "TM1602AP2":
+        from scraper.targets.arris_modem_TM1602AP2 import ArrisModemTM1602AP2
+        return ArrisModemTM1602AP2()
+    if model == "CM802A":
+        from scraper.targets.arris_modem_CM802A import ArrisModemCM802A
+        return ArrisModemCM802A()
+
+def get_outputter(output):
+    if output == 'influxdb':
+        return InfluxDBOutputter(influx_config)
+    else:
+        return PrinterOutputter()
 
 if __name__ == "__main__":
     run_scraper()

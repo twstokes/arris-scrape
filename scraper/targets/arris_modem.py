@@ -6,21 +6,49 @@ from lxml import html
 from ..target import Target
 from ..items import InfluxableItem
 
+
 class ArrisModem(Target):
     """
-    Target subclass that represents an Arris modem model TM1602AP2
-    running software 9.1.103J6J.
+    Target subclass that represents an Arris modem model
 
     Args:
         Target (string): [HTML]
     """
+    
     def extract_items_from_html(self, html_string):
         # get items from the downstream table
-        downstream_items = get_downstream_items(html_string)
+        downstream_items = self.get_downstream_items(html_string)
         # get items from the upstream table
-        upstream_items = get_upstream_items(html_string)
+        upstream_items = self.get_upstream_items(html_string)
 
         return downstream_items + upstream_items
+
+    def get_downstream_items(self,html_string):
+        """
+        Function to convert an HTML string to a list of DownstreamItems.
+
+        Args:
+            html_string (string): HTML
+
+        Returns:
+            [DownstreamItem]: List of DownstreamItems
+        """
+        # Override in subclass for individual modem model
+        pass
+
+
+    def get_upstream_items(self,html_string):
+        """
+        Function to convert an HTML string to a list of UpstreamItems.
+
+        Args:
+            html_string (string): HTML
+
+        Returns:
+            [UpstreamItem]: List of UpstreamItems
+        """
+        # Override in subclass for individual modem model
+        pass
 
 class DownstreamItem(InfluxableItem):
     """
@@ -83,72 +111,4 @@ class UpstreamItem(InfluxableItem):
         }
 
 
-def get_downstream_items(html_string):
-    """
-    Function to convert an HTML string to a list of DownstreamItems.
 
-    Args:
-        html_string (string): HTML
-
-    Returns:
-        [DownstreamItem]: List of DownstreamItems
-    """
-    tree = html.fromstring(html_string)
-    # grab the downstream table and skip the first row
-    rows = tree.xpath('/html/body/div[1]/div[3]/table[2]/tbody//tr[position()>1]')
-
-    # key order must match the table column layout
-    keys = [
-        'downstream_id',
-        'dcid',
-        'freq',
-        'power',
-        'snr',
-        'modulation',
-        'octets',
-        'correcteds',
-        'uncorrectables'
-    ]
-
-    items = []
-
-    for row in rows:
-        values = row.xpath('td/text()')
-        zipped = dict(zip(keys, values))
-        items.append(DownstreamItem(zipped.items()))
-
-    return items
-
-def get_upstream_items(html_string):
-    """
-    Function to convert an HTML string to a list of UpstreamItems.
-
-    Args:
-        html_string (string): HTML
-
-    Returns:
-        [UpstreamItem]: List of UpstreamItems
-    """
-    tree = html.fromstring(html_string)
-    # grab the upstream table and skip the first row
-    rows = tree.xpath('/html/body/div[1]/div[3]/table[4]/tbody//tr[position()>1]')
-
-    # key order must match the table column layout
-    keys = [
-        'upstream_id',
-        'ucid',
-        'freq',
-        'power',
-        'channel_type',
-        'symbol_rate',
-        'modulation'
-    ]
-
-    items = []
-
-    for row in rows:
-        values = row.xpath('td/text()')
-        zipped = dict(zip(keys, values))
-        items.append(UpstreamItem(zipped.items()))
-
-    return items
