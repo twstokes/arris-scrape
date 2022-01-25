@@ -9,11 +9,8 @@ from .arris_modem import ArrisModem, UpstreamItem, DownstreamItem
 
 class ArrisModemCM820A(ArrisModem):
     """
-    Target subclass that represents an Arris modem model CM820A
+    ArrisModem subclass that represents an Arris modem model CM820A
     running software 9.1.103S.
-
-    Args:
-        Target (string): [HTML]
     """
 
     def get_downstream_items(self,html_string):
