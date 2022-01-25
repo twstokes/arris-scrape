@@ -39,7 +39,7 @@ A preset Grafana dashboard is included with this project with some alerts that m
 
 #### First
 
-Copy `config_sample.py` to `config.py` and fill in your modem's URL as well as your InfluxDB hostname. Depending on your InfluxDB configuration, you may need to add more options (e.g. authentication). See the `influxdb.InfluxDBClient` Python module for all possibilities.
+Copy `config_sample.py` to `config.py` and fill in your modem's URL and model as well as your InfluxDB hostname. Depending on your InfluxDB configuration, you may need to add more options (e.g. authentication). See the `influxdb.InfluxDBClient` Python module for all possibilities.
 
 #### Python only
 
@@ -69,6 +69,6 @@ Import the included [Grafana JSON](full-service/grafana_dashboards) and tweak ap
 
 ## Extending
 
-There's a good chance your modem status page doesn't match this one, but you want to accomplish the same task. If your modem allows you to see a status page without any authentication but it just has a different layout, then adapting is straightforward. Just clone the `arris_modem.py` target and change the fields and xpath queries as needed. Use the `PrinterOutputter` to see what data points would be uploaded to InfluxDB before doing any real uploading.
+There's a good chance your modem status page doesn't match this one, but you want to accomplish the same task. If your modem allows you to see a status page without any authentication but it just has a different layout, then adapting is straightforward. Just create a new subclass of `arris_modem.py` target and change the fields and xpath queries as needed. Use the `PrinterOutputter` to see what data points would be uploaded to InfluxDB before doing any real uploading.
 
 If your modem requires some form of authentication, you'll need to implement that part. It may be as simple as snooping on HTTP headers using your browser to see what the script needs to send.

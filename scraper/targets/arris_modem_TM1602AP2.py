@@ -7,14 +7,15 @@ from ..target import Target
 from ..items import InfluxableItem
 from .arris_modem import ArrisModem, UpstreamItem, DownstreamItem
 
-class ArrisModemCM820A(ArrisModem):
+class ArrisModemTM1602AP2(ArrisModem):
     """
-    Target subclass that represents an Arris modem model CM820A
-    running software 9.1.103S.
+    Target subclass that represents an Arris modem model TM1602AP2
+    running software 9.1.103J6J.
 
     Args:
         Target (string): [HTML]
     """
+
     #def extract_items_from_html(self, html_string):
         #get items from the downstream table
         #downstream_items = get_downstream_items(html_string)
@@ -22,6 +23,7 @@ class ArrisModemCM820A(ArrisModem):
         #upstream_items = get_upstream_items(html_string)
 
         #return downstream_items + upstream_items
+
 
     def get_downstream_items(self,html_string):
         """
@@ -71,8 +73,7 @@ class ArrisModemCM820A(ArrisModem):
         """
         tree = html.fromstring(html_string)
         # grab the upstream table and skip the first row
-        # CM820A upstream tables have a blank record so set start record to 2 or higher
-        rows = tree.xpath('/html/body/div[1]/div[3]/table[4]/tbody//tr[position()>2]')
+        rows = tree.xpath('/html/body/div[1]/div[3]/table[4]/tbody//tr[position()>1]')
 
         # key order must match the table column layout
         keys = [
