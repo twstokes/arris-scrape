@@ -10,19 +10,9 @@ from .arris_modem import ArrisModem, UpstreamItem, DownstreamItem
 
 class ArrisModemSB6183(ArrisModem):
     """
-    Target subclass that represents an Arris modem model SB6183
+    ArrisModem subclass that represents an Arris modem model SB6183
     running software 
-
-    Args:
-        Target (string): [HTML]
     """
-    #def extract_items_from_html(self, html_string):
-        #get items from the downstream table
-        #downstream_items = get_downstream_items(html_string)
-        #get items from the upstream table
-        #upstream_items = get_upstream_items(html_string)
-
-        #return downstream_items + upstream_items
 
     def get_downstream_items(self,html_string):
         """
