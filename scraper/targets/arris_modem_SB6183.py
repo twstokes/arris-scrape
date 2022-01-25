@@ -68,7 +68,6 @@ class ArrisModemSB6183(ArrisModem):
             uncorrectables = table_row.find_all('td')[8].text.strip()
             octets = "0"
 
-    #        print("Channel = %s, Channel ID = %s, Frequency = %s, Power = %s, SNR = %s, corrected = %s, uncorrectables = %s" % (channel, channel_id, frequency, power, snr, corrected, uncorrectables))
             values = ( channel, lock_status, modulation, channel_id, frequency, power, snr, corrected, uncorrectables, octets )
             zipped = dict(zip(keys, values))
             items.append(DownstreamItem(zipped.items()))
