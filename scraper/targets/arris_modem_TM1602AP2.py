@@ -16,15 +16,6 @@ class ArrisModemTM1602AP2(ArrisModem):
         Target (string): [HTML]
     """
 
-    #def extract_items_from_html(self, html_string):
-        #get items from the downstream table
-        #downstream_items = get_downstream_items(html_string)
-        #get items from the upstream table
-        #upstream_items = get_upstream_items(html_string)
-
-        #return downstream_items + upstream_items
-
-
     def get_downstream_items(self,html_string):
         """
         Function to convert an HTML string to a list of DownstreamItems.
