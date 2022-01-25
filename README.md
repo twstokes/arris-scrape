@@ -10,6 +10,8 @@ The scraper is flexible in that you can subclass pieces to scrape other modems a
 
 A preset Grafana dashboard is included with this project with some alerts that monitor the modem's signal levels. The level thresholds were created from the data on [this website](https://pickmymodem.com/signal-levels-docsis-3-03-1-cable-modem/).
 
+<details>
+  <summary>Expand for list of fields and tags</summary>
 - Fields:
   - Downstream
     - SNR
@@ -29,6 +31,7 @@ A preset Grafana dashboard is included with this project with some alerts that m
   - Modulation (downstream / upstream)
   - Upstream ID
   - Channel Type (upstream)
+</details>
 
 ## Getting Started
 
@@ -41,18 +44,22 @@ A preset Grafana dashboard is included with this project with some alerts that m
 
 Copy `config_sample.py` to `config.py` and fill in your modem's URL and model as well as your InfluxDB hostname. Depending on your InfluxDB configuration, you may need to add more options (e.g. authentication). See the `influxdb.InfluxDBClient` Python module for all possibilities.
 
-#### Python only
+<details>
+  <summary>Python only</summary>
 
 1. Follow the instructions above to set up the config file.
 2. `pip install -r requirements.txt`
 3. `python scrape.py`
+</details>
 
-#### Docker
+<details>
+  <summary>Docker</summary>
 
 1. Follow the instructions above to set up the config file.
 2. Install Docker
 3. Run `docker-compose build`
 4. Run `docker-compose up`
+</details>
 
 #### Last
 
