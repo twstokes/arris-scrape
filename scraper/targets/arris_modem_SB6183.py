@@ -54,7 +54,6 @@ class ArrisModemSB6183(ArrisModem):
         items = []
         
         for table_row in soup.find_all("table")[2].find_all("tr")[2:]:
-    #       print(table_row.find_all('td'))
             if table_row.th:
                 continue
             channel = table_row.find_all('td')[0].text.strip()
