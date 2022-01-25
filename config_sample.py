@@ -2,7 +2,7 @@
 Parameters for the modem scraper.
 """
 scraper_config = {
-    'modem_model' '', #POPULATE MODEM MODEL HERE
+    'modem_model' '', # POPULATE MODEM MODEL HERE
     'modem_url': '', # POPULATE MODEM URL HERE
     'max_retries': 5,
     'poll_interval_seconds': 30
