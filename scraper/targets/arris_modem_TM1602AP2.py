@@ -11,9 +11,6 @@ class ArrisModemTM1602AP2(ArrisModem):
     """
     Target subclass that represents an Arris modem model TM1602AP2
     running software 9.1.103J6J.
-
-    Args:
-        Target (string): [HTML]
     """
 
     def get_downstream_items(self,html_string):
