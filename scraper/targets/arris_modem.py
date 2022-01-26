@@ -6,7 +6,6 @@ from lxml import html
 from ..target import Target
 from ..items import InfluxableItem
 
-
 class ArrisModem(Target):
     """
     Target subclass that represents an Arris modem model

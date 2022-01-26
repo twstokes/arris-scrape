@@ -3,8 +3,6 @@ Arris modem module.
 """
 from lxml import html
 
-from ..target import Target
-from ..items import InfluxableItem
 from bs4 import BeautifulSoup
 from .arris_modem import ArrisModem, UpstreamItem, DownstreamItem
 
