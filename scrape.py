@@ -49,8 +49,8 @@ def get_target(model):
         from scraper.targets.arris_modem_TM1602AP2 import ArrisModemTM1602AP2
         return ArrisModemTM1602AP2()
     if model == "CM802A":
-        from scraper.targets.arris_modem_CM802A import ArrisModemCM802A
-        return ArrisModemCM802A()
+        from scraper.targets.arris_modem_CM820A import ArrisModemCM820A
+        return ArrisModemCM820A()
 
 def get_outputter(output):
     if output == 'influxdb':
