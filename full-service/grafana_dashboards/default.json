@@ -495,7 +495,11 @@
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "non_negative_difference"
               }
             ]
           ],
@@ -630,7 +634,11 @@
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "non_negative_difference"
               }
             ]
           ],
