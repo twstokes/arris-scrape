@@ -28,8 +28,8 @@ class RequestsDownloader(Downloader):
     """
     @staticmethod
     def download(url):
-        result = requests.get(url)
-
+        result = requests.get(url,timeout=10)
+        
         if result.status_code != 200:
             raise Exception("Received non-200 response.")
 
