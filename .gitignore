@@ -102,4 +102,6 @@ ENV/
 
 .DS_Store
 config.py
+tools/config.py
+tools/*.html
 .vscode
