@@ -1,37 +1,5 @@
-"""
-Outputters module.
-"""
+from .outputter import Outputter
 from influxdb import InfluxDBClient
-
-
-class Outputter():
-    """
-    Subclass this for outputting Items to something.
-    """
-    def output(self, items):
-        """
-        Output list of items.
-
-        Args:
-            items ([Item]): List of items to output.
-        """
-
-    def reset(self):
-        """
-        Reset the outputter.
-        """
-
-class PrinterOutputter(Outputter):
-    """
-    Prints items to the screen.
-    """
-    def reset(self):
-        pass
-
-    @staticmethod
-    def output(items):
-        for item in items:
-            print(item)
 
 class InfluxDBOutputter(Outputter):
     """

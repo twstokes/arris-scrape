@@ -1,20 +1,5 @@
-"""
-Downloader module.
-"""
+from .downloader import Downloader
 import requests
-
-
-class Downloader():
-    """
-    Subclass this for downloading content from URLs.
-    """
-    def download(self, url):
-        """
-        Given a URL, return the HTML content body as a string, otherwise raise.
-
-        Args:
-            url (string): URL to download HTML from.
-        """
 
 class RequestsDownloader(Downloader):
     """
