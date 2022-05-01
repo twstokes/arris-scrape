@@ -1,5 +1,5 @@
-from .outputter import Outputter
 from influxdb import InfluxDBClient
+from .outputter import Outputter
 
 class InfluxDBOutputter(Outputter):
     """

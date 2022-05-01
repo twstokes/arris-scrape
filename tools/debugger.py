@@ -1,4 +1,6 @@
-import os, sys, traceback
+import os
+import sys
+import traceback
 
 # adds the parent to the path
 parent_path = os.path.abspath('..')
