@@ -2,9 +2,9 @@ import sys
 import time
 
 from config import scraper_config, influx_config
-from scraper.outputters import InfluxDBOutputter
-from scraper.outputters import PrinterOutputter
-from scraper.downloaders import RequestsDownloader
+from scraper.outputters.influxdb import InfluxDBOutputter
+from scraper.outputters.printer import PrinterOutputter
+from scraper.downloaders.requests import RequestsDownloader
 
 MAX_RETRIES = scraper_config['max_retries']
 MODEM_URL = scraper_config['modem_url']
