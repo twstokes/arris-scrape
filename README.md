@@ -79,3 +79,15 @@ Import the included [Grafana JSON](full-service/grafana_dashboards) and tweak ap
 There's a good chance your modem status page doesn't match this one, but you want to accomplish the same task. If your modem allows you to see a status page without any authentication but it just has a different layout, then adapting is straightforward. Just create a new subclass of `arris_modem.py` target and change the fields and xpath queries as needed. Use the `PrinterOutputter` to see what data points would be uploaded to InfluxDB before doing any real uploading.
 
 If your modem requires some form of authentication, you'll need to implement that part. It may be as simple as snooping on HTTP headers using your browser to see what the script needs to send.
+
+## Debugger
+
+A simple debugging tool exists in `tools` that will process and output either a remote or local HTML status page.
+
+1. Run `pip install -r requirements.txt` in the root of the repo (or install modules as needed)
+2. Copy `config_sample.py` to `config.py` (in its directory) and populate the values
+3. Run `python3 debugger.py`
+
+### Debugging using a local file
+
+Save the modem's status page as an HTML file locally and point `config.py` to its path, then set `is_remote` to `True`. Relative paths are supported, so if dropping this file in the `tools` directory just supply the filename.
