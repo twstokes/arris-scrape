@@ -45,6 +45,9 @@ def get_target(model):
     if model == "CM802A":
         from scraper.targets.arris_modem_CM820A import ArrisModemCM820A
         return ArrisModemCM820A()
+    if model == "SB6190":
+        from scraper.targets.arris_modem_SB6190 import ArrisModemSB6190
+        return ArrisModemSB6190()
 
 def get_downloader():
     if IS_REMOTE:
